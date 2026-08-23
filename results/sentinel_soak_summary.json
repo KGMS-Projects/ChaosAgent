@@ -1,0 +1,18 @@
+{
+  "start_time": "2026-08-22T15:51:47.293997+00:00",
+  "end_time": "2026-08-22T15:52:26.657337+00:00",
+  "duration_seconds": 39.36,
+  "total_observations": 2,
+  "state_transitions": 0,
+  "time_in_steady_seconds": 30.0,
+  "time_in_degraded_seconds": 0.0,
+  "time_in_critical_seconds": 0.0,
+  "time_in_recovering_seconds": 0.0,
+  "uptime_percent": 76.21,
+  "longest_steady_streak_seconds": 30.0,
+  "false_positive_transitions": 0,
+  "max_error_rate_observed": 0.0,
+  "max_p99_latency_observed": 0.0,
+  "max_cpu_utilization_observed": 0.0606,
+  "total_pod_restarts_observed": 0
+}

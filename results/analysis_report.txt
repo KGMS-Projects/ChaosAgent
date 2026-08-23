@@ -1,0 +1,76 @@
+
+====================================================================================================
+  TABLE IV: Comparative Time to Recovery Results (minutes)
+====================================================================================================
+Failure Category           Manual Baseline  Rule-Based Tool Proposed Framework    Improvement
+----------------------------------------------------------------------------------------------------
+Pod Termination                   12.5 min          0.4 min            2.2 min          82.7%
+Network Latency                   68.3 min          0.4 min            2.2 min          96.8%
+Resource Exhaustion               74.2 min          0.4 min            2.2 min          97.0%
+Packet Loss                       45.5 min          0.4 min            2.2 min          95.2%
+Configuration Drift               55.3 min N/A (unsupported)            2.2 min          96.0%
+----------------------------------------------------------------------------------------------------
+Mean (all scenarios)              51.2 min                             2.2 min          95.7%
+====================================================================================================
+
+==========================================================================================
+  TABLE V: Resource and Cost Comparison Summary
+==========================================================================================
+Metric                                       Manual      Rule-Based        Proposed
+------------------------------------------------------------------------------------------
+Mean TTR                                   51.2 min         0.4 min         2.2 min
+Vulnerability Detection Rate                   100%              0%            100%
+Configuration Drift Support                     Yes              No             Yes
+Cascading Failure Support                Yes (slow)              No             Yes
+Monthly Operational Cost                    ~$8,300           ~$200      ~$1 + $200
+==========================================================================================
+
+================================================================================
+  STATISTICAL ANALYSIS
+================================================================================
+
+  MANUAL ARM:
+    N = 20
+    Mean TTR:     51.17 min
+    Std Dev TTR:  22.35 min
+    Min TTR:      11.83 min
+    Max TTR:      75.33 min
+    Median TTR:   55.42 min
+    Recovery rate: 100.0%
+    configuration_drift: mean=55.3 min (n=4)
+    network_latency: mean=68.3 min (n=4)
+    packet_loss: mean=45.5 min (n=4)
+    pod_termination: mean=12.5 min (n=4)
+    resource_exhaustion: mean=74.2 min (n=4)
+
+  RULE BASED ARM:
+    N = 16
+    Mean TTR:     0.41 min
+    Std Dev TTR:  0.02 min
+    Min TTR:      0.38 min
+    Max TTR:      0.45 min
+    Median TTR:   0.41 min
+    Recovery rate: 100.0%
+    network_latency: mean=0.4 min (n=4)
+    packet_loss: mean=0.4 min (n=4)
+    pod_termination: mean=0.4 min (n=4)
+    resource_exhaustion: mean=0.4 min (n=4)
+
+  PROPOSED ARM:
+    N = 20
+    Mean TTR:     2.20 min
+    Std Dev TTR:  0.08 min
+    Min TTR:      2.06 min
+    Max TTR:      2.34 min
+    Median TTR:   2.19 min
+    Recovery rate: 100.0%
+    configuration_drift: mean=2.2 min (n=4)
+    network_latency: mean=2.2 min (n=4)
+    packet_loss: mean=2.2 min (n=4)
+    pod_termination: mean=2.2 min (n=4)
+    resource_exhaustion: mean=2.2 min (n=4)
+
+  DATA QUALITY:
+    Real (is_simulated=False):      60 rows
+    Simulated (is_simulated=True):  0 rows
+================================================================================

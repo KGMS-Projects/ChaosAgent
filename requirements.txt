@@ -1,0 +1,17 @@
+# Core agent orchestration
+langgraph>=1.2.10
+langchain-core>=1.5.3
+langchain-anthropic>=1.5.3
+anthropic>=0.120.2
+
+# State schemas
+pydantic>=2.13.4
+python-dotenv>=1.0.0
+
+# Infrastructure integration
+kubernetes>=36.0.3
+prometheus-api-client>=0.7.2
+
+# Testing
+pytest>=9.1.1
+pytest-mock>=3.15.1

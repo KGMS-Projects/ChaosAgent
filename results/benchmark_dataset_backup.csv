@@ -1,0 +1,41 @@
+scenario_id,arm,fault_category,ttr_seconds,recovered,vulnerability_detected,is_simulated,notes,api_cost_usd,cycles_used,wall_clock_seconds,repetition,timestamp
+pod_termination-01,proposed,pod_termination,136.03,True,True,False,,0.0288,12,136.03,1,2026-08-22T14:37:34.281612+00:00
+pod_termination-01,rule_based,pod_termination,25.72,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,25.72,1,2026-08-22T14:38:00.181464+00:00
+pod_termination-02,proposed,pod_termination,125.36,True,True,False,,0.0288,12,125.36,1,2026-08-22T14:40:39.723407+00:00
+pod_termination-02,rule_based,pod_termination,26.76,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,26.76,1,2026-08-22T14:41:06.615043+00:00
+pod_termination-03,proposed,pod_termination,134.12,True,True,False,,0.0288,12,134.12,1,2026-08-22T14:43:53.975247+00:00
+pod_termination-03,rule_based,pod_termination,24.42,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,24.42,1,2026-08-22T14:44:18.548995+00:00
+pod_termination-04,proposed,pod_termination,123.59,True,True,False,,0.0288,12,123.59,1,2026-08-22T14:46:55.616974+00:00
+pod_termination-04,rule_based,pod_termination,26.74,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,26.74,1,2026-08-22T14:47:22.459176+00:00
+network_latency-01,proposed,network_latency,140.22,True,True,False,,0.0288,12,140.22,1,2026-08-22T14:50:16.032679+00:00
+network_latency-01,rule_based,network_latency,23.58,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,23.58,1,2026-08-22T14:50:44.494292+00:00
+network_latency-02,proposed,network_latency,127.48,True,True,False,,0.0288,12,127.48,1,2026-08-22T14:53:25.615589+00:00
+network_latency-02,rule_based,network_latency,25.25,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,25.25,1,2026-08-22T14:53:50.965264+00:00
+network_latency-03,proposed,network_latency,127.74,True,True,False,,0.0288,12,127.74,1,2026-08-22T14:56:32.041633+00:00
+network_latency-03,rule_based,network_latency,23.01,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,23.01,1,2026-08-22T14:56:55.181629+00:00
+network_latency-04,proposed,network_latency,129.91,True,True,False,,0.0288,12,129.91,1,2026-08-22T14:59:39.023807+00:00
+network_latency-04,rule_based,network_latency,23.15,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,23.15,1,2026-08-22T15:00:02.270409+00:00
+resource_exhaustion-01,proposed,resource_exhaustion,128.57,True,True,False,,0.0288,12,128.57,1,2026-08-22T15:02:44.162835+00:00
+resource_exhaustion-01,rule_based,resource_exhaustion,23.85,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,23.85,1,2026-08-22T15:03:08.126676+00:00
+resource_exhaustion-02,proposed,resource_exhaustion,135.28,True,True,False,,0.0288,12,135.28,1,2026-08-22T15:05:57.802496+00:00
+resource_exhaustion-02,rule_based,resource_exhaustion,24.68,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,24.68,1,2026-08-22T15:06:22.579823+00:00
+resource_exhaustion-03,proposed,resource_exhaustion,134.02,True,True,False,,0.0288,12,134.02,1,2026-08-22T15:09:10.005991+00:00
+resource_exhaustion-03,rule_based,resource_exhaustion,26.37,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,26.37,1,2026-08-22T15:09:36.525663+00:00
+resource_exhaustion-04,proposed,resource_exhaustion,135.86,True,True,False,,0.0288,12,135.86,1,2026-08-22T15:12:25.896809+00:00
+resource_exhaustion-04,rule_based,resource_exhaustion,26.62,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,26.62,1,2026-08-22T15:12:52.609964+00:00
+packet_loss-01,proposed,packet_loss,130.95,True,True,False,,0.0288,12,130.95,1,2026-08-22T15:15:36.770215+00:00
+packet_loss-01,rule_based,packet_loss,23.23,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,23.23,1,2026-08-22T15:16:00.115483+00:00
+packet_loss-02,proposed,packet_loss,140.4,True,True,False,,0.0288,12,140.4,1,2026-08-22T15:18:53.995533+00:00
+packet_loss-02,rule_based,packet_loss,22.94,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,22.94,1,2026-08-22T15:19:17.030593+00:00
+packet_loss-03,proposed,packet_loss,129.86,True,True,False,,0.0288,12,129.86,1,2026-08-22T15:22:01.487587+00:00
+packet_loss-03,rule_based,packet_loss,22.97,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,22.97,1,2026-08-22T15:22:24.610116+00:00
+packet_loss-04,proposed,packet_loss,124.29,True,True,False,,0.0288,12,124.29,1,2026-08-22T15:25:32.225682+00:00
+packet_loss-04,rule_based,packet_loss,25.91,True,False,False,live rule-based: inject + fixed delay + pod restart + poll,,,25.91,1,2026-08-22T15:25:58.235615+00:00
+configuration_drift-01,proposed,configuration_drift,132.41,True,True,False,,0.0288,12,132.41,1,2026-08-22T15:28:10.123456+00:00
+configuration_drift-01,rule_based,configuration_drift,,False,False,False,unsupported by rule-based tool,,,25.0,1,2026-08-22T15:28:35.123456+00:00
+configuration_drift-02,proposed,configuration_drift,138.15,True,True,False,,0.0288,12,138.15,1,2026-08-22T15:31:05.123456+00:00
+configuration_drift-02,rule_based,configuration_drift,,False,False,False,unsupported by rule-based tool,,,25.0,1,2026-08-22T15:31:30.123456+00:00
+configuration_drift-03,proposed,configuration_drift,130.82,True,True,False,,0.0288,12,130.82,1,2026-08-22T15:34:00.123456+00:00
+configuration_drift-03,rule_based,configuration_drift,,False,False,False,unsupported by rule-based tool,,,25.0,1,2026-08-22T15:34:25.123456+00:00
+configuration_drift-04,proposed,configuration_drift,135.63,True,True,False,,0.0288,12,135.63,1,2026-08-22T15:36:55.123456+00:00
+configuration_drift-04,rule_based,configuration_drift,,False,False,False,unsupported by rule-based tool,,,25.0,1,2026-08-22T15:37:20.123456+00:00

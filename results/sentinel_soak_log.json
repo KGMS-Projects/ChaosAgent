@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-08-22T15:51:52.509290+00:00",
+    "elapsed_seconds": 0.0,
+    "health_status": "steady",
+    "health_score": 100.0,
+    "error_rate": 0.0,
+    "p99_latency_ms": 0.0,
+    "cpu_utilization": 0.0593,
+    "memory_utilization": 0.6684,
+    "pod_restarts": 0,
+    "state_transition": null
+  },
+  {
+    "timestamp": "2026-08-22T15:52:11.656947+00:00",
+    "elapsed_seconds": 20.22,
+    "health_status": "steady",
+    "health_score": 100.0,
+    "error_rate": 0.0,
+    "p99_latency_ms": 0.0,
+    "cpu_utilization": 0.0606,
+    "memory_utilization": 0.6685,
+    "pod_restarts": 0,
+    "state_transition": null
+  }
+]

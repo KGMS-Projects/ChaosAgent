@@ -1,0 +1,41 @@
+scenario_id,arm,fault_category,ttr_seconds,recovered,vulnerability_detected,is_simulated,notes,api_cost_usd,cycles_used,wall_clock_seconds,repetition,timestamp
+pod_termination-01,proposed,pod_termination,90,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.511062+00:00
+pod_termination-01,rule_based,pod_termination,554.1130512605968,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.511170+00:00
+pod_termination-02,proposed,pod_termination,90,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.538206+00:00
+pod_termination-02,rule_based,pod_termination,581.2537035471701,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.538401+00:00
+pod_termination-03,proposed,pod_termination,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.560675+00:00
+pod_termination-03,rule_based,pod_termination,436.03800140937767,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.560782+00:00
+pod_termination-04,proposed,pod_termination,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.584080+00:00
+pod_termination-04,rule_based,pod_termination,602.7408142213493,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.584230+00:00
+network_latency-01,proposed,network_latency,75,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.616472+00:00
+network_latency-01,rule_based,network_latency,1643.720418193004,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.616614+00:00
+network_latency-02,proposed,network_latency,90,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.648816+00:00
+network_latency-02,rule_based,network_latency,1779.1639625044963,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.648963+00:00
+network_latency-03,proposed,network_latency,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.671474+00:00
+network_latency-03,rule_based,network_latency,1713.3795755053943,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.671976+00:00
+network_latency-04,proposed,network_latency,75,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.697584+00:00
+network_latency-04,rule_based,network_latency,1733.4062223940907,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.697732+00:00
+resource_exhaustion-01,proposed,resource_exhaustion,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.722797+00:00
+resource_exhaustion-01,rule_based,resource_exhaustion,1955.3499038935884,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.722936+00:00
+resource_exhaustion-02,proposed,resource_exhaustion,90,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.747711+00:00
+resource_exhaustion-02,rule_based,resource_exhaustion,1860.0595607747664,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.747820+00:00
+resource_exhaustion-03,proposed,resource_exhaustion,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.774359+00:00
+resource_exhaustion-03,rule_based,resource_exhaustion,1862.095586920221,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.774528+00:00
+resource_exhaustion-04,proposed,resource_exhaustion,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.797509+00:00
+resource_exhaustion-04,rule_based,resource_exhaustion,1959.5438550082476,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.797657+00:00
+packet_loss-01,proposed,packet_loss,75,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.820044+00:00
+packet_loss-01,rule_based,packet_loss,1239.6939584723937,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.820160+00:00
+packet_loss-02,proposed,packet_loss,75,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.846578+00:00
+packet_loss-02,rule_based,packet_loss,1212.792952869887,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.846686+00:00
+packet_loss-03,proposed,packet_loss,75,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.868164+00:00
+packet_loss-03,rule_based,packet_loss,1112.8287515949596,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.868264+00:00
+packet_loss-04,proposed,packet_loss,75,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.891336+00:00
+packet_loss-04,rule_based,packet_loss,1244.2988040560865,True,False,True,illustrative only -- replace with real Chaos Mesh timing,,,,1,2026-08-22T12:00:15.891481+00:00
+configuration_drift-01,proposed,configuration_drift,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.913434+00:00
+configuration_drift-01,rule_based,configuration_drift,,False,False,True,unsupported by rule-based tool (simulated),,,,1,2026-08-22T12:00:15.913527+00:00
+configuration_drift-02,proposed,configuration_drift,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.933493+00:00
+configuration_drift-02,rule_based,configuration_drift,,False,False,True,unsupported by rule-based tool (simulated),,,,1,2026-08-22T12:00:15.933580+00:00
+configuration_drift-03,proposed,configuration_drift,90,True,True,True,simulated wall-clock 0.02s,,12,0.02,1,2026-08-22T12:00:15.959484+00:00
+configuration_drift-03,rule_based,configuration_drift,,False,False,True,unsupported by rule-based tool (simulated),,,,1,2026-08-22T12:00:15.959573+00:00
+configuration_drift-04,proposed,configuration_drift,90,True,True,True,simulated wall-clock 0.01s,,12,0.01,1,2026-08-22T12:00:15.983763+00:00
+configuration_drift-04,rule_based,configuration_drift,,False,False,True,unsupported by rule-based tool (simulated),,,,1,2026-08-22T12:00:15.983885+00:00

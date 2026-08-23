@@ -1,0 +1,21 @@
+scenario_id,fault_category,ttr_seconds,recovered,vulnerability_detected,notes
+pod_termination-01,pod_termination,720,true,true,Manual runbook: kubectl get pods + identify crash + pod deletion
+pod_termination-02,pod_termination,780,true,true,Manual runbook: investigate logs + restart checkoutservice
+pod_termination-03,pod_termination,710,true,true,Manual runbook: inspect crashloop on productcatalogservice + restart
+pod_termination-04,pod_termination,790,true,true,Manual runbook: frontend service pod restart and verify health
+network_latency-01,network_latency,3980,true,true,Manual runbook: isolate latency on paymentservice via logs/Prometheus
+network_latency-02,network_latency,4200,true,true,Manual runbook: trace slow RPC on shippingservice
+network_latency-03,network_latency,4050,true,true,Manual runbook: investigate recommendationservice downstream latency
+network_latency-04,network_latency,4170,true,true,Manual runbook: identify currencyservice bottleneck
+resource_exhaustion-01,resource_exhaustion,4380,true,true,Manual runbook: diagnose CPU throttle on redis-cart + scale
+resource_exhaustion-02,resource_exhaustion,4520,true,true,Manual runbook: trace CPU spike on productcatalogservice
+resource_exhaustion-03,resource_exhaustion,4410,true,true,Manual runbook: inspect cartservice memory leak
+resource_exhaustion-04,resource_exhaustion,4490,true,true,Manual runbook: checkoutservice memory exhaustion recovery
+packet_loss-01,packet_loss,2680,true,true,Manual runbook: isolate emailservice dropped RPCs
+packet_loss-02,packet_loss,2790,true,true,Manual runbook: investigate adservice packet loss via metrics
+packet_loss-03,packet_loss,2650,true,true,Manual runbook: trace packet drop on recommendationservice
+packet_loss-04,packet_loss,2810,true,true,Manual runbook: investigate frontend dropped packets
+configuration_drift-01,configuration_drift,3250,true,true,Manual runbook: identify invalid PORT env on currencyservice + patch
+configuration_drift-02,configuration_drift,3380,true,true,Manual runbook: inspect env var mismatch on paymentservice + patch
+configuration_drift-03,configuration_drift,3290,true,true,Manual runbook: diagnose checkoutservice config drift + patch
+configuration_drift-04,configuration_drift,3360,true,true,Manual runbook: restore shippingservice configuration

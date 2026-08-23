@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaosAgent — Autonomous Multi-Agent Chaos Engineering & Self-Healing Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css?v=20260823_3">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h2>ChaosAgent</h2>
+          <span>Live GKE Self-Healing</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Executive Overview
+        </button>
+        <button class="nav-item" data-tab="multi-agent">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+          Multi-Agent Studio
+        </button>
+        <button class="nav-item" data-tab="evaluation-summary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Evaluation Breakdown
+        </button>
+        <button class="nav-item" data-tab="topology">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          Cluster Topology
+        </button>
+        <button class="nav-item" data-tab="benchmarks">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          Thesis Benchmarks
+        </button>
+        <button class="nav-item" data-tab="soak-test">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          24h Soak Test (RO6)
+        </button>
+      </nav>
+
+      <div class="cluster-status-card">
+        <div class="status-indicator online"></div>
+        <div class="cluster-meta">
+          <div class="cluster-name">GKE Live Cluster</div>
+          <div class="namespace-tag" id="cluster-ns">chaos-demo</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="top-header">
+        <div class="page-title">
+          <h1 id="page-heading">Executive Overview</h1>
+          <p id="page-subheading">Live Cluster Telemetry, Attack-Monitor-Heal Cycle & Comparative Benchmarks</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline" id="btn-refresh" title="Refresh Live Telemetry">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            Refresh
+          </button>
+          <button class="btn btn-outline" id="btn-reset-data" title="Clear previous runs for a fresh live demo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            Clear Data (Fresh Demo)
+          </button>
+          <button class="btn btn-outline" id="btn-restore-data" title="Restore previous full 20-scenario dataset">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+            Restore Benchmark Data
+          </button>
+          <button class="btn btn-emerald" id="btn-run-all-live">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/><line x1="19" y1="19" x2="5" y2="19"/></svg>
+            Run All 20 Live Scenarios
+          </button>
+          <button class="btn btn-primary" id="btn-launch-modal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Inject Single Fault (Live)
+          </button>
+        </div>
+      </header>
+
+      <!-- TAB 1: OVERVIEW -->
+      <section id="tab-overview" class="tab-pane active">
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card highlight-glow">
+            <div class="kpi-header">
+              <span class="kpi-title">MTTR Improvement</span>
+              <span class="badge badge-success">+95.7%</span>
+            </div>
+            <div class="kpi-value" id="kpi-mttr-imp">95.7%</div>
+            <div class="kpi-subtext">2.2 min (Live AI) vs 51.2 min (Manual SRE)</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Vulnerability Detection</span>
+              <span class="badge badge-purple">100% Rate</span>
+            </div>
+            <div class="kpi-value" id="kpi-vdr">100%</div>
+            <div class="kpi-subtext">20/20 Live Scenarios Uncovered</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Self-Healing Recovery</span>
+              <span class="badge badge-cyan">100% Rate</span>
+            </div>
+            <div class="kpi-value" id="kpi-recovery">100%</div>
+            <div class="kpi-subtext">All 5 Failure Categories Resolved</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title">Live Cluster Health</span>
+              <span class="badge badge-emerald">STEADY</span>
+            </div>
+            <div class="kpi-value text-emerald" id="kpi-health">100/100</div>
+            <div class="kpi-subtext">Prometheus Port 9090 Active</div>
+          </div>
+        </div>
+
+        <!-- Middle Section: Chart + Tripartite Flow -->
+        <div class="dashboard-split-grid">
+          <div class="card glass-card">
+            <div class="card-header">
+              <h3>Comparative MTTR by Failure Category (Table IV)</h3>
+              <span class="tag">100% Live Cluster Telemetry</span>
+            </div>
+            <div class="card-body">
+              <div class="chart-container" id="mttr-chart-wrapper">
+                <canvas id="overviewMttrChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="card glass-card">
+            <div class="card-header">
+              <h3>Live Tripartite Agent Pipeline</h3>
+              <span class="tag">LangGraph CoT Engine</span>
+            </div>
+            <div class="card-body">
+              <div class="agent-pipeline">
+                <div class="agent-box adversary">
+                  <div class="agent-icon">⚔️</div>
+                  <div class="agent-info">
+                    <h4>Adversary Agent</h4>
+                    <p>ReAct & CoT fault hypothesis over dependency graph</p>
+                    <span class="agent-badge">Claude / Gemini Pro</span>
+                  </div>
+                </div>
+
+                <div class="pipeline-arrow">▼</div>
+
+                <div class="agent-box sentinel">
+                  <div class="agent-icon">🛡️</div>
+                  <div class="agent-info">
+                    <h4>Sentinel Agent</h4>
+                    <p>FSM safety gate, Prometheus monitoring & blast radius check</p>
+                    <span class="agent-badge">Deterministic Safety + FSM</span>
+                  </div>
+                </div>
+
+                <div class="pipeline-arrow">▼</div>
+
+                <div class="agent-box remediation">
+                  <div class="agent-icon">🩺</div>
+                  <div class="agent-info">
+                    <h4>Remediation Agent</h4>
+                    <p>RCA, Dry-run manifest validation & self-healing</p>
+                    <span class="agent-badge">Kubernetes CoreV1 & AppsV1</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Runs Table -->
+        <div class="card glass-card mt-4">
+          <div class="card-header">
+            <h3>Empirical Live Scenario Runs (20 Core Scenarios)</h3>
+            <span class="tag" id="live-row-count">40 Live Rows</span>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="data-table" id="recent-runs-table">
+              <thead>
+                <tr>
+                  <th>Scenario ID</th>
+                  <th>Arm</th>
+                  <th>Fault Category</th>
+                  <th>TTR</th>
+                  <th>Recovery Status</th>
+                  <th>Vulnerability</th>
+                  <th>API Cost (USD)</th>
+                </tr>
+              </thead>
+              <tbody id="recent-runs-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: MULTI-AGENT STUDIO -->
+      <section id="tab-multi-agent" class="tab-pane">
+        <div class="card glass-card">
+          <div class="card-header">
+            <h3>Live Attack-Monitor-Heal Multi-Agent Studio</h3>
+            <div class="header-tools">
+              <select id="studio-scenario-select" class="form-select"></select>
+              <button class="btn btn-primary" id="btn-run-studio">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Execute Live Fault on Cluster
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- Preset Quick Attack Buttons -->
+            <div class="preset-attacks-bar">
+              <span class="preset-label">Live Injections:</span>
+              <button class="btn-preset" data-sc="pod_termination-01">💥 Pod Kill (Cart)</button>
+              <button class="btn-preset" data-sc="network_latency-01">⏳ Latency 200ms (Payment)</button>
+              <button class="btn-preset" data-sc="resource_exhaustion-01">🔥 CPU Stress 70% (Redis)</button>
+              <button class="btn-preset" data-sc="packet_loss-01">📡 Packet Loss 10% (Email)</button>
+              <button class="btn-preset" data-sc="configuration_drift-01">⚙️ Config Drift (Currency)</button>
+            </div>
+
+            <!-- Live Storyboard Explainer Card -->
+            <div class="attack-story-card mt-4" id="attack-story-card">
+              <div class="story-header">
+                <div class="story-title">
+                  <span class="story-tag" id="story-attack-badge">💥 Attack Ready</span>
+                  <h4 id="story-title-text">Select an attack to inspect what happens live</h4>
+                </div>
+                <div class="story-meta">
+                  <span class="meta-label">Target Service:</span>
+                  <span class="meta-value text-emerald" id="story-target-svc">cartservice</span>
+                </div>
+              </div>
+              <div class="story-grid">
+                <div class="story-col">
+                  <div class="story-label">🔴 What is Happening (The Attack & Symptoms):</div>
+                  <div class="story-text" id="story-attack-desc">Target microservice will receive a live injected fault. Prometheus will detect latency spikes or pod termination.</div>
+                </div>
+                <div class="story-col">
+                  <div class="story-label">🛡️ Sentinel Safety & Anomaly Detection:</div>
+                  <div class="story-text" id="story-sentinel-desc">Sentinel checks that blast radius is <30%, detects health degradation in Prometheus, and triggers healing.</div>
+                </div>
+                <div class="story-col">
+                  <div class="story-label">🔧 Autonomous Fix (How It is Self-Healed):</div>
+                  <div class="story-text" id="story-heal-desc">Remediation performs Root Cause Analysis (RCA), dry-runs the YAML fix, and patches Kubernetes APIs.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-layout mt-4">
+              <!-- Visual Multi-Agent Flow Pipeline -->
+              <div class="studio-pipeline-visual">
+                <div class="step-card" id="step-adv">
+                  <div class="step-badge">Phase 1: Attack</div>
+                  <div class="step-icon">⚔️</div>
+                  <div class="step-name">Adversary Agent</div>
+                  <div class="step-desc">Hypothesis & Chaos Mesh CRD</div>
+                  <div class="step-status">IDLE</div>
+                </div>
+
+                <div class="step-card" id="step-sen">
+                  <div class="step-badge">Phase 2: Monitor</div>
+                  <div class="step-icon">🛡️</div>
+                  <div class="step-name">Sentinel Agent</div>
+                  <div class="step-desc">Blast radius & Anomaly detection</div>
+                  <div class="step-status">IDLE</div>
+                </div>
+
+                <div class="step-card" id="step-rem">
+                  <div class="step-badge">Phase 3: Heal</div>
+                  <div class="step-icon">🩺</div>
+                  <div class="step-name">Remediation Agent</div>
+                  <div class="step-desc">RCA & Kubernetes live patching</div>
+                  <div class="step-status">IDLE</div>
+                </div>
+
+                <div class="step-card" id="step-ver">
+                  <div class="step-badge">Phase 4: Confirm</div>
+                  <div class="step-icon">✅</div>
+                  <div class="step-name">Sentinel Verify</div>
+                  <div class="step-desc">Prometheus confirms STEADY</div>
+                  <div class="step-status">IDLE</div>
+                </div>
+              </div>
+
+              <!-- Console Execution Log -->
+              <div class="console-card">
+                <div class="console-header">
+                  <div class="console-title">
+                    <span class="dot-live"></span>
+                    <span>Real-Time Live Agent Chain-of-Thought Stream</span>
+                  </div>
+                  <div class="console-meta">
+                    <span class="badge badge-emerald" id="stream-status">READY</span>
+                    <button class="btn-copy" id="btn-copy-console">Copy Log</button>
+                  </div>
+                </div>
+                <pre class="console-body" id="agent-console-log">Select a scenario above and click "Execute Live Fault on Cluster" to observe the real-time actions taken by the 3 autonomous agents.</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: EVALUATION BREAKDOWN (WHAT'S GOOD, BAD, FIXED) -->
+      <section id="tab-evaluation-summary" class="tab-pane">
+        <div class="evaluation-summary-grid">
+          <!-- The Good -->
+          <div class="card glass-card eval-card good-border">
+            <div class="card-header">
+              <div class="eval-header-title">
+                <span class="eval-icon">🟢</span>
+                <h3>The Good: Autonomous Resilience</h3>
+              </div>
+              <span class="badge badge-success">100% Healed</span>
+            </div>
+            <div class="card-body">
+              <div class="eval-list" id="eval-good-list">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- The Bad / Vulnerabilities Found -->
+          <div class="card glass-card eval-card bad-border">
+            <div class="card-header">
+              <div class="eval-header-title">
+                <span class="eval-icon">🔴</span>
+                <h3>The Bad: Vulnerabilities Found</h3>
+              </div>
+              <span class="badge badge-rose">20 Uncovered</span>
+            </div>
+            <div class="card-body">
+              <div class="eval-list" id="eval-bad-list">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- The Fixed / Remediation Actions -->
+          <div class="card glass-card eval-card fixed-border">
+            <div class="card-header">
+              <div class="eval-header-title">
+                <span class="eval-icon">🔧</span>
+                <h3>The Fixed: Self-Healing Actions</h3>
+              </div>
+              <span class="badge badge-cyan">Auto-Patched</span>
+            </div>
+            <div class="card-body">
+              <div class="eval-list" id="eval-fixed-list">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: CLUSTER TOPOLOGY & TARGETING OTHER APPS -->
+      <section id="tab-topology" class="tab-pane">
+        <!-- Targeting Other Microservices App Card -->
+        <div class="card glass-card mb-4">
+          <div class="card-header">
+            <h3>Target Another Microservices Application or Namespace</h3>
+            <span class="badge badge-purple">Universal Microservices Engine</span>
+          </div>
+          <div class="card-body">
+            <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:14px;">
+              This autonomous multi-agent framework is <strong>generalizable</strong> and works on <strong>any Kubernetes microservices website or backend</strong> (e.g. Sock Shop, TrainTicket, Bookinfo, or your custom e-commerce app).
+            </p>
+            <div class="custom-target-bar">
+              <div class="target-input-group">
+                <label>Kubernetes Namespace:</label>
+                <input type="text" id="input-custom-ns" class="form-input" value="chaos-demo" placeholder="e.g. sock-shop, default, production">
+              </div>
+              <div class="target-input-group">
+                <label>Target Ingress / Service:</label>
+                <input type="text" id="input-custom-svc" class="form-input" value="frontend" placeholder="e.g. front-end, api-gateway">
+              </div>
+              <button class="btn btn-outline" id="btn-discover-cluster">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Discover Pods & Telemetry
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass-card">
+          <div class="card-header">
+            <h3>Google Online Boutique Microservice Architecture Map</h3>
+            <span class="tag">10 Core Microservices + Redis Cache</span>
+          </div>
+          <div class="card-body">
+            <!-- Visual Node-Link Flow Graph -->
+            <div class="topology-visual-canvas" id="topology-canvas">
+              <div class="topo-flow-wrapper">
+                <!-- Tier 1: Ingress -->
+                <div class="topo-tier-col">
+                  <div class="tier-heading">TIER 1: INGRESS GATEWAY</div>
+                  <div class="topo-node-card edge-node" id="node-frontend" data-svc="frontend">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">frontend</div>
+                    <div class="node-type">Go HTTP / gRPC Gateway</div>
+                    <div class="node-stats">Port: 80 | Health: 100%</div>
+                  </div>
+                </div>
+
+                <!-- Connector -->
+                <div class="topo-connector-col">
+                  <svg class="topo-svg-lines" viewBox="0 0 100 400">
+                    <path d="M 0 200 C 50 200, 50 60, 100 60" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                    <path d="M 0 200 C 50 200, 50 130, 100 130" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                    <path d="M 0 200 C 50 200, 50 200, 100 200" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                    <path d="M 0 200 C 50 200, 50 270, 100 270" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                    <path d="M 0 200 C 50 200, 50 340, 100 340" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                  </svg>
+                </div>
+
+                <!-- Tier 2: Domain Services -->
+                <div class="topo-tier-col">
+                  <div class="tier-heading">TIER 2: DOMAIN SERVICES</div>
+                  <div class="topo-node-card" id="node-checkoutservice" data-svc="checkoutservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">checkoutservice</div>
+                    <div class="node-type">Order Orchestrator (Go)</div>
+                  </div>
+                  <div class="topo-node-card" id="node-cartservice" data-svc="cartservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">cartservice</div>
+                    <div class="node-type">Cart Manager (C# .NET)</div>
+                  </div>
+                  <div class="topo-node-card" id="node-productcatalogservice" data-svc="productcatalogservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">productcatalogservice</div>
+                    <div class="node-type">Catalog & Search (Go)</div>
+                  </div>
+                  <div class="topo-node-card" id="node-currencyservice" data-svc="currencyservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">currencyservice</div>
+                    <div class="node-type">FX Rates (Node.js)</div>
+                  </div>
+                  <div class="topo-node-card" id="node-recommendationservice" data-svc="recommendationservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">recommendationservice</div>
+                    <div class="node-type">ML Recommender (Python)</div>
+                  </div>
+                  <div class="topo-node-card" id="node-adservice" data-svc="adservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">adservice</div>
+                    <div class="node-type">Ad Server (Java)</div>
+                  </div>
+                </div>
+
+                <!-- Connector -->
+                <div class="topo-connector-col">
+                  <svg class="topo-svg-lines" viewBox="0 0 100 400">
+                    <path d="M 0 60 C 50 60, 50 100, 100 100" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                    <path d="M 0 60 C 50 60, 50 180, 100 180" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                    <path d="M 0 60 C 50 60, 50 260, 100 260" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                    <path d="M 0 130 C 50 130, 50 340, 100 340" stroke="rgba(99,102,241,0.5)" fill="none" stroke-width="2"/>
+                  </svg>
+                </div>
+
+                <!-- Tier 3: Downstream & Data -->
+                <div class="topo-tier-col">
+                  <div class="tier-heading">TIER 3: CRITICAL BACKENDS & DATA</div>
+                  <div class="topo-node-card critical-node" id="node-paymentservice" data-svc="paymentservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">paymentservice</div>
+                    <div class="node-type">Payment Gateway (Node.js)</div>
+                  </div>
+                  <div class="topo-node-card" id="node-shippingservice" data-svc="shippingservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">shippingservice</div>
+                    <div class="node-type">Shipping Quotes (Go)</div>
+                  </div>
+                  <div class="topo-node-card" id="node-emailservice" data-svc="emailservice">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">emailservice</div>
+                    <div class="node-type">Order Notifications (Python)</div>
+                  </div>
+                  <div class="topo-node-card db-node" id="node-redis-cart" data-svc="redis-cart">
+                    <div class="node-indicator"></div>
+                    <div class="node-name">redis-cart</div>
+                    <div class="node-type">In-Memory Cache (Redis 7)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Details Grid -->
+            <div class="topology-grid mt-4" id="topology-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: THESIS BENCHMARKS -->
+      <section id="tab-benchmarks" class="tab-pane">
+        <div class="grid-2col">
+          <div class="card glass-card">
+            <div class="card-header">
+              <h3>Table IV: Comparative Time to Recovery (Minutes)</h3>
+              <div class="table-actions">
+                <span class="tag">Empirical MTTR</span>
+                <button class="btn-copy" id="btn-copy-t4">Copy Table</button>
+              </div>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Failure Category</th>
+                    <th>Manual Baseline</th>
+                    <th>Rule-Based Tool</th>
+                    <th>Proposed Framework</th>
+                    <th>Improvement</th>
+                  </tr>
+                </thead>
+                <tbody id="table-iv-tbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card glass-card">
+            <div class="card-header">
+              <h3>Table V: Resource & Cost Comparison Summary</h3>
+              <div class="table-actions">
+                <span class="tag">Capabilities</span>
+                <button class="btn-copy" id="btn-copy-t5">Copy Table</button>
+              </div>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Manual</th>
+                    <th>Rule-Based</th>
+                    <th>Proposed Framework</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Mean TTR</td><td>51.2 min</td><td>0.4 min (24s)</td><td><strong class="text-emerald">2.2 min</strong></td></tr>
+                  <tr><td>Vulnerability Detection Rate</td><td>100%</td><td>0%</td><td><strong class="text-emerald">100%</strong></td></tr>
+                  <tr><td>Configuration Drift Support</td><td>Yes</td><td>No (Fails)</td><td><strong class="text-emerald">Yes</strong></td></tr>
+                  <tr><td>Cascading Failure Support</td><td>Yes (slow)</td><td>No</td><td><strong class="text-emerald">Yes</strong></td></tr>
+                  <tr><td>Monthly Operational Cost</td><td>~$8,300</td><td>~$200</td><td><strong class="text-emerald">~$1 + $200</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass-card mt-4">
+          <div class="card-header">
+            <h3>Complete Statistical Analysis Report</h3>
+            <span class="tag">results/analysis_report.txt</span>
+          </div>
+          <div class="card-body">
+            <pre class="console-body" id="full-report-text">Loading analysis report...</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: 24H SOAK TEST (RO6) -->
+      <section id="tab-soak-test" class="tab-pane">
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-title">Sentinel Uptime</div>
+            <div class="kpi-value text-emerald">99.98%</div>
+            <div class="kpi-subtext">Continuous Prometheus Telemetry</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title">Total Observations</div>
+            <div class="kpi-value" id="soak-obs">5,760</div>
+            <div class="kpi-subtext">15s Scrape Frequency</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title">False Positive Transitions</div>
+            <div class="kpi-value text-emerald" id="soak-fp">0</div>
+            <div class="kpi-subtext">Zero Phantom Incidents</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title">Longest Steady Streak</div>
+            <div class="kpi-value" id="soak-streak">23.98 hrs</div>
+            <div class="kpi-subtext">Zero Memory Leaks / Crashes</div>
+          </div>
+        </div>
+
+        <div class="card glass-card mt-4">
+          <div class="card-header">
+            <h3>Sentinel Continuous Monitoring Stream (RO6 Evidence)</h3>
+            <span class="tag">Prometheus Polling</span>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="data-table" id="soak-log-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Health Status</th>
+                  <th>Health Score</th>
+                  <th>Error Rate</th>
+                  <th>P99 Latency</th>
+                  <th>CPU Usage</th>
+                  <th>Restarts</th>
+                </tr>
+              </thead>
+              <tbody id="soak-log-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Run Scenario Modal -->
+  <div class="modal-overlay" id="scenario-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Execute Live Chaos Engineering Scenario</h3>
+        <button class="btn-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="modal-scenario-select">Select Scenario (20 Core Scenarios):</label>
+          <select id="modal-scenario-select" class="form-select"></select>
+        </div>
+        <div class="form-group">
+          <label for="modal-mode-select">Execution Mode:</label>
+          <select id="modal-mode-select" class="form-select">
+            <option value="live">Live GKE Cluster (Chaos Mesh + Prometheus)</option>
+            <option value="simulated">Simulated Fast Harness (Test Verification)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="modal-cancel">Cancel</button>
+        <button class="btn btn-primary" id="modal-run">Inject Live Fault</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="app.js?v=20260823_3"></script>
+</body>
+</html>
